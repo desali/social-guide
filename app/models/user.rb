@@ -15,6 +15,8 @@
 class User < ApplicationRecord
     has_one_attached :avatar
 
+    has_secure_password
+
     has_many :questionnaires
     has_many :notifications
     has_many :posts
