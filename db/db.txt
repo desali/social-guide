@@ -1,0 +1,103 @@
+User:
+  username:string
+  email:string
+  name:string
+  surname:string
+  birthdate:date
+  phone:integer
+
+  avatar:attachment
+
+has_and_belongs_to_many :guides
+has_many :questionnaires
+has_many :notifications
+has_many :posts
+has_many :likes, through: :posts
+has_many :reviews
+
+Categorie:
+  title:string
+
+has_many :guides
+
+Guide:
+  categorie_id:integer
+  name:string
+  description:text
+  status:integer
+
+  image:attachment
+
+belongs_to :categorie
+has_and_belongs_to_many :users
+has_many :steps
+has_many :reviews
+
+Step:
+  guide_id:integer
+  name:string
+  description:text
+  status:boolean
+
+belongs_to :guide
+
+Notification:
+  user_id:integer
+  guide_id:integer
+  date:date
+  state:string
+
+belongs_to :user
+
+Questionnaire:
+  user_id:integer
+  role:string (student, ...)
+
+belongs_to :user
+has_and_belongs_to_many :interests
+has_and_belongs_to_many :roles
+has_many :questions
+
+Interest:
+  title:string
+
+has_and_belongs_to_many :questionnaires
+
+Role:
+  title:string
+
+has_and_belongs_to_many :questionnaires
+
+Post:
+  user_id:integer
+  guide_id:integer
+  date:date
+  state:string
+
+belongs_to :user
+has_many :likes
+
+Like:
+  post_id:integer
+  user_id:integer
+
+belongs_to :post
+belongs_to :user
+
+add_index :likes, :post_id
+add_index :likes, [:post_id, :user_id], unique: true
+
+Review:
+  guide_id:integer
+  user_id:integer
+  score:integer
+  description:text
+
+belongs_to :guide
+belongs_to :user
+
+Question:
+  title:string
+  answer:text
+
+belongs_to  :questionnaire
