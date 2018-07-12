@@ -12,13 +12,14 @@
 #
 
 class Guide < ApplicationRecord
+    has_one_attached :image
     belongs_to :categorie
-    has_and_belongs_to_many :users
     has_many :steps
     has_many :reviews
-    has_one_attached :image
+    has_and_belongs_to_many :users
+
     validates :categorie_id, presence: true
-    validates :name, presence: true, length: { minimum: 2, maximum: 20 }, format: { with: /\A[0-9a-zA-Z_.\-]+\Z/, message: "Only alphanumeric characters, and -_."}
-    validates :description, presence: true, length: { minimum: 4, maximum: 100 }, format: { with: /\A[0-9a-zA-Z_.\-]+\Z/, message: "Only alphanumeric characters, and -_."}
-    validates :status, presence: true 
+    validates :name, presence: true, length: { minimum: 2, maximum: 50 }
+    validates :description, presence: true, length: { minimum: 4, maximum: 200 }
+    validates :status, presence: true
 end

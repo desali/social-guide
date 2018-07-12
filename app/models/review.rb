@@ -14,8 +14,9 @@
 class Review < ApplicationRecord
     belongs_to :guide
     belongs_to :user
+
     validates :guide_id, presence: true
     validates :user_id, presence: true
-    validates :score, presence: true, length: { minimum: 1, maximum: 5 }, format: { with: /\A[0-9a-zA-Z_.\-]+\Z/, message: "Only alphanumeric characters, and -_."}
-    validates :description, presence: true, length: { minimum: 2, maximum: 20 }, format: { with: /\A[0-9a-zA-Z_.\-]+\Z/, message: "Only alphanumeric characters, and -_."}
+    validates :score, presence: true, length: { minimum: 1, maximum: 2 }
+    validates :description, presence: true, length: { minimum: 2, maximum: 100 }
 end

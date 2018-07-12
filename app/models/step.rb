@@ -13,8 +13,9 @@
 
 class Step < ApplicationRecord
     belongs_to :guide
+
     validates :guide_id, presence: true
-    validates :name, presence: true, length: { minimum: 2, maximum: 10 }, format: { with: /\A[0-9a-zA-Z_.\-]+\Z/, message: "Only alphanumeric characters, and -_."}
-    validates :description, presence: true, length: { minimum: 8, maximum: 40 }, format: { with: /\A[0-9a-zA-Z_.\-]+\Z/, message: "Only alphanumeric characters, and -_."}
+    validates :name, presence: true, length: { minimum: 2, maximum: 20 }
+    validates :description, presence: true, length: { minimum: 8, maximum: 100 }
     validates :status, presence: true
 end

@@ -14,8 +14,9 @@
 class Post < ApplicationRecord
     belongs_to :user
     has_many :likes
-    validates :user_id
-    validates :guide_id
-    validates :date, presence: true, length: { minimum: 4, maximum: 20 }, format: { with: /\A[0-9a-zA-Z_.\-]+\Z/, message: "Only alphanumeric characters, and -_."}
+
+    validates :user_id, presence: true
+    validates :guide_id, presence: true
+    validates :date, presence: true
     validates :status, presence: true
 end
