@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       post "/auth/login", to: "auth#login"
     	post "/auth/register", to: "auth#register"
+    	
+    	get "/categories", to: "categories#list"
     end
   end
 end
