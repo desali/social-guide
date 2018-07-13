@@ -26,6 +26,12 @@ Rails.application.routes.draw do
       post "/user/:id/questionnaires", to: "questionnaires#add"
       post "/questionnaire/:id", to: "questionnaires#destroy"
       get "/questionnaire/:id", to: "questionnaires#questionnaire"
+
+
+      get "/user/:id/followers", to: "friends#followers"
+      get "/user/:id/following", to: "friends#following"
+      post "/user/:id/follow", to: "friends#follow"
+      post "/user/:id/unfollow", to: "friends#unfollow"
     end
   end
 end
