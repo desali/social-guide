@@ -15,6 +15,16 @@ class Api::V1::ReviewsController < ApplicationController
         end
     end
 
+    def destroy
+        @review = Review.find_by(guide_id: params[:guide_id], user_id: params[:user_id])
+
+        @review.destroy
+
+        render json: {
+            status: "destroyed"
+        }
+    end
+
     private
 
     def review_params

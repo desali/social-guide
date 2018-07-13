@@ -10,4 +10,20 @@ class Api::V1::GuidesController < ApplicationController
 
         render json: @guide
     end
+    
+    def create
+        @guide = Guide.new(categorie_params)
+
+        if @guide.save
+            render json: @guide 
+        else
+            render json: @guide.errors
+        end
+    end
+    
+    private
+
+    def categorie_params
+      params.permit(:categorie_id, :name, :description, :status)
+    end
 end
