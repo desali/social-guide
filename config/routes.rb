@@ -30,6 +30,8 @@ Rails.application.routes.draw do
       post "/user/:id/questionnaires", to: "questionnaires#add"
       post "/questionnaire/:id", to: "questionnaires#destroy"
       get "/questionnaire/:id", to: "questionnaires#questionnaire"
+      
+      get "/user/:id/notification", to: "notifications#list"
     end
   end
 end
