@@ -6,7 +6,7 @@ class Api::V1::GuidesController < ApplicationController
     end
     
     def guide
-        @guide = Categorie.find_by(id: params[:id])
+        @guide = Guide.find_by(id: params[:id])
 
         render json: @guide
     end

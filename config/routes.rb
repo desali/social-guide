@@ -16,12 +16,12 @@ Rails.application.routes.draw do
       get "/guide/:id/reviews", to: "reviews#list"
       post "/guide/:id/reviews/new", to: "reviews#create"
 
-      get "/followeds/:id/posts", to: "posts#show"
-      get "/followeds/:id/posts/:id", to: "posts#post" 
+      get "/user/:id/posts", to: "posts#show"
+      get "/user/:id/post/:id", to: "posts#post" 
       
-      post "/posts/:id/like", to: "likes#create"
-      post "/posts/:id/unlike", to: "likes#destroy"
-
+      get "/post/:id/like", to: "likes#list"
+      post "/post/:id/like", to: "likes#create"
+      post "/post/:id/like/:id", to: "likes#destroy"
     end
   end
 end

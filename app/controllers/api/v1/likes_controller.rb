@@ -1,4 +1,10 @@
 class Api::V1::LikesController < ApplicationController
+    def list
+        @likes = Like.all
+
+        render json: @likes
+    end
+    
     def create
         @like = Like.new
 
