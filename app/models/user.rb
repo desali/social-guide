@@ -2,16 +2,18 @@
 #
 # Table name: users
 #
-#  id         :integer          not null, primary key
-#  username   :string
-#  email      :string
-#  name       :string
-#  surname    :string
-#  birthdate  :date
-#  phone      :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id              :integer          not null, primary key
+#  username        :string
+#  email           :string
+#  name            :string
+#  surname         :string
+#  birthdate       :date
+#  phone           :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  password_digest :string
 #
+
 class User < ApplicationRecord
     has_one_attached :avatar
 
@@ -38,7 +40,7 @@ class User < ApplicationRecord
     validates :name, presence: true, length: { minimum: 2, maximum: 20 }, format: { with: /\A[0-9a-zA-Z_.\-]+\Z/, message: "Only alphanumeric characters, and -_."}
     validates :email, presence: true, uniqueness: true, length: { minimum: 6, maximum: 50}, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, message: "Invalid email!"}
     validates :birthdate, presence: true
-    validates :phone, presence: true, length: { minimum: 8, maximum: 11 }, format: { with: /\A[0-9+]+\Z/, message: "Invalid phone number!"}
+    validates :phone, presence: true
     validates :password, presence: true, confirmation: true, length: { minimum: 8, maximum: 50 }, format: { with: /\A[0-9a-zA-Z_.\-]+\Z/, message: "Only alphanumeric characters, and -_."}
     validates :password_confirmation, presence: true, length: { minimum: 8, maximum: 50 }, format: { with: /\A[0-9a-zA-Z_.\-]+\Z/, message: "Only alphanumeric characters, and -_."}
 end
