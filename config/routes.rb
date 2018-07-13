@@ -22,6 +22,11 @@ Rails.application.routes.draw do
       get "/post/:id/like", to: "likes#list"
       post "/post/:id/like", to: "likes#create"
       post "/post/:id/like/:id", to: "likes#destroy"
+
+      get "/user/:id/questionnaires", to: "questionnaires#show"
+      post "/user/:id/questionnaires/new", to: "questionnaires#add"
+      post "/user/:id/questionnaire/:id", to: "questionnaires#destroy"
+      get "/user/:id/questionnaire/:id", to: "questionnaires#questionnaire"
     end
   end
 end
