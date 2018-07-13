@@ -16,6 +16,9 @@ Rails.application.routes.draw do
       get "/guide/:id/reviews", to: "reviews#list"
       post "/guide/:id/reviews", to: "reviews#create"
 
+      get "/user/:id", to: "users#show"
+      post "/user/:id", to: "users#edit"
+
       get "/user/:id/posts", to: "posts#show"
 
       get "/post/:id/likes", to: "likes#list"
@@ -24,8 +27,15 @@ Rails.application.routes.draw do
 
       get "/user/:id/questionnaires", to: "questionnaires#show"
       post "/user/:id/questionnaires", to: "questionnaires#add"
-      post "/questionnaire/:id", to: "questionnaires#destroy"
+
       get "/questionnaire/:id", to: "questionnaires#questionnaire"
+      post "/questionnaire/:id", to: "questionnaires#destroy"
+      post "/questionnaire/:id/interests", to: "questionnaires#addInterest"
+      post "/questionnaire/:id/roles", to: "questionnaires#addRole"
+
+      get "/interests", to: "interests#list"
+
+      get "/roles", to: "roles#list"
     end
   end
 end

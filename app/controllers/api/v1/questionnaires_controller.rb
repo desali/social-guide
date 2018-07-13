@@ -28,6 +28,36 @@ class Api::V1::QuestionnairesController < ApplicationController
     def questionnaire
         @questionnaire = Questionnaire.find_by(id: params[:id])
 
-        render json: @questionnaire
+        render json: @questionnaire, include: [:interests, :roles]
+    end
+
+    def addInterest
+        @questionnaire = Questionnaire.find_by(id: params[:id])
+        @interest = Interest.find_by(id: params[:interest_id])
+
+        if @questionnaire.interests << @interest
+            render json: {
+              "status": "Added!"
+            }
+        else
+            render json: {
+              "status": "Failed!"
+            }
+        end
+    end
+
+    def addRole
+        @questionnaire = Questionnaire.find_by(id: params[:id])
+        @role = Role.find_by(id: params[:role_id])
+
+        if @questionnaire.roles << @role
+            render json: {
+              "status": "Added!"
+            }
+        else
+            render json: {
+              "status": "Failed!"
+            }
+        end
     end
 end

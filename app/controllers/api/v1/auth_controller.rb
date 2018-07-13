@@ -4,7 +4,7 @@ class Api::V1::AuthController < ApplicationController
     @user = User.new(register_params)
 
     if @user.save
-      render json: @user
+      render json: @user, except: [:id, :password_digest, :created_at, :updated_at]
     else
       render json: @user.errors
     end
