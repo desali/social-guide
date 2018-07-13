@@ -16,12 +16,13 @@ class Api::V1::FriendsController < ApplicationController
 	def followers
     	@user = User.find_by(id: params[:id])
 
-  		render json: @user.followers
+  		render json: @user.followers, only: [:name, :surname,]
 	end
 
 	def following
     	@user = User.find_by(id: params[:id])
 
-  		render json: @user.following
+  		render json: @user.following, only: [:name, :surname,]
 	end
+
 end
