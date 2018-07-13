@@ -16,6 +16,5 @@ class Step < ApplicationRecord
 
     validates :guide_id, presence: true
     validates :name, presence: true, length: { minimum: 2, maximum: 20 }
-    validates :description, presence: true, length: { minimum: 8, maximum: 100 }
-    validates :status, presence: true
+    validates :description, presence: true, length: { minimum: 4, maximum: 100 }
 end

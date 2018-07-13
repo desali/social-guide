@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_12_122855) do
+ActiveRecord::Schema.define(version: 2018_07_13_112721) do
 
   create_table "categories", force: :cascade do |t|
     t.string "title"
@@ -27,10 +27,20 @@ ActiveRecord::Schema.define(version: 2018_07_12_122855) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "guides_users", id: false, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "guide_id", null: false
+  end
+
   create_table "interests", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "interests_questionnaires", id: false, force: :cascade do |t|
+    t.integer "questionnaire_id", null: false
+    t.integer "interest_id", null: false
   end
 
   create_table "likes", force: :cascade do |t|
@@ -52,7 +62,6 @@ ActiveRecord::Schema.define(version: 2018_07_12_122855) do
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
     t.integer "guide_id"
-    t.date "date"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -60,9 +69,13 @@ ActiveRecord::Schema.define(version: 2018_07_12_122855) do
 
   create_table "questionnaires", force: :cascade do |t|
     t.integer "user_id"
-    t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "questionnaires_roles", id: false, force: :cascade do |t|
+    t.integer "questionnaire_id", null: false
+    t.integer "role_id", null: false
   end
 
   create_table "questions", force: :cascade do |t|
