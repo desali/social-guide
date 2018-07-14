@@ -42,6 +42,11 @@ Rails.application.routes.draw do
       get "/roles", to: "roles#list"
 
       get "/user/:id/notification", to: "notifications#list"
+
+      get "/user/:id/followers", to: "friends#followers"
+      get "/user/:id/following", to: "friends#following"
+      post "/user/:id/follow", to: "friends#follow"
+      post "/user/:id/unfollow", to: "friends#unfollow"
     end
   end
 end
